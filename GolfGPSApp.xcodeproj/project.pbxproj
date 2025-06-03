@@ -1,0 +1,741 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0829194F51B096BBE3A8CAB2 /* Pods_GolfGPSApp_GolfGPSAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAF3EAC3EEBBE341EA6BAEE /* Pods_GolfGPSApp_GolfGPSAppUITests.framework */; };
+		2517B005777C4548DFC453BD /* Pods_GolfGPSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98F5CE18C83A9A0E7237E3F4 /* Pods_GolfGPSApp.framework */; };
+		6393EB962DED0A1100262FFA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393EB952DED0A1100262FFA /* StoreKit.framework */; };
+		6393EBBC2DED171D00262FFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393EBBB2DED171D00262FFA /* MapKit.framework */; };
+		6393EBBE2DED172B00262FFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6393EBBD2DED172B00262FFA /* CoreLocation.framework */; };
+		6393EBC02DEE3A8000262FFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6393EBBF2DEE3A7F00262FFA /* GoogleService-Info.plist */; };
+		F0FC786DB953933DDF2BAD8C /* Pods_GolfGPSAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B32694D0649F3766C7619D /* Pods_GolfGPSAppTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6393EB762DED09A400262FFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6393EB572DED09A200262FFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6393EB5E2DED09A200262FFA;
+			remoteInfo = GolfGPSApp;
+		};
+		6393EB802DED09A400262FFA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6393EB572DED09A200262FFA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6393EB5E2DED09A200262FFA;
+			remoteInfo = GolfGPSApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0BAF3EAC3EEBBE341EA6BAEE /* Pods_GolfGPSApp_GolfGPSAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GolfGPSApp_GolfGPSAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		381B8B938754EB36760D7C02 /* Pods-GolfGPSApp-GolfGPSAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolfGPSApp-GolfGPSAppUITests.release.xcconfig"; path = "Target Support Files/Pods-GolfGPSApp-GolfGPSAppUITests/Pods-GolfGPSApp-GolfGPSAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		588C3CE8B3584B9227920BF1 /* Pods-GolfGPSAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolfGPSAppTests.release.xcconfig"; path = "Target Support Files/Pods-GolfGPSAppTests/Pods-GolfGPSAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		5DE20A6EB6B4EF424F6A95BC /* Pods-GolfGPSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolfGPSApp.release.xcconfig"; path = "Target Support Files/Pods-GolfGPSApp/Pods-GolfGPSApp.release.xcconfig"; sourceTree = "<group>"; };
+		6393EB5F2DED09A200262FFA /* GolfGPSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GolfGPSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6393EB752DED09A400262FFA /* GolfGPSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GolfGPSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6393EB7F2DED09A400262FFA /* GolfGPSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GolfGPSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6393EB952DED0A1100262FFA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6393EBBB2DED171D00262FFA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6393EBBD2DED172B00262FFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6393EBBF2DEE3A7F00262FFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6B194044E4BC529D67379BE3 /* Pods-GolfGPSAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolfGPSAppTests.debug.xcconfig"; path = "Target Support Files/Pods-GolfGPSAppTests/Pods-GolfGPSAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		97B32694D0649F3766C7619D /* Pods_GolfGPSAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GolfGPSAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98F5CE18C83A9A0E7237E3F4 /* Pods_GolfGPSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GolfGPSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8B198809366D9C3D8A8D2AF /* Pods-GolfGPSApp-GolfGPSAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolfGPSApp-GolfGPSAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-GolfGPSApp-GolfGPSAppUITests/Pods-GolfGPSApp-GolfGPSAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FE5DC58F7F84BEC6368C0570 /* Pods-GolfGPSApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolfGPSApp.debug.xcconfig"; path = "Target Support Files/Pods-GolfGPSApp/Pods-GolfGPSApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6393EB872DED09A400262FFA /* Exceptions for "GolfGPSApp" folder in "GolfGPSApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6393EB5E2DED09A200262FFA /* GolfGPSApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6393EB612DED09A200262FFA /* GolfGPSApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6393EB872DED09A400262FFA /* Exceptions for "GolfGPSApp" folder in "GolfGPSApp" target */,
+			);
+			path = GolfGPSApp;
+			sourceTree = "<group>";
+		};
+		6393EB782DED09A400262FFA /* GolfGPSAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GolfGPSAppTests;
+			sourceTree = "<group>";
+		};
+		6393EB822DED09A400262FFA /* GolfGPSAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GolfGPSAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6393EB5C2DED09A200262FFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393EBBE2DED172B00262FFA /* CoreLocation.framework in Frameworks */,
+				6393EBBC2DED171D00262FFA /* MapKit.framework in Frameworks */,
+				6393EB962DED0A1100262FFA /* StoreKit.framework in Frameworks */,
+				2517B005777C4548DFC453BD /* Pods_GolfGPSApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393EB722DED09A400262FFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0FC786DB953933DDF2BAD8C /* Pods_GolfGPSAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393EB7C2DED09A400262FFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0829194F51B096BBE3A8CAB2 /* Pods_GolfGPSApp_GolfGPSAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E23711171236CC118AC77B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE5DC58F7F84BEC6368C0570 /* Pods-GolfGPSApp.debug.xcconfig */,
+				5DE20A6EB6B4EF424F6A95BC /* Pods-GolfGPSApp.release.xcconfig */,
+				A8B198809366D9C3D8A8D2AF /* Pods-GolfGPSApp-GolfGPSAppUITests.debug.xcconfig */,
+				381B8B938754EB36760D7C02 /* Pods-GolfGPSApp-GolfGPSAppUITests.release.xcconfig */,
+				6B194044E4BC529D67379BE3 /* Pods-GolfGPSAppTests.debug.xcconfig */,
+				588C3CE8B3584B9227920BF1 /* Pods-GolfGPSAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6393EB562DED09A200262FFA = {
+			isa = PBXGroup;
+			children = (
+				6393EB612DED09A200262FFA /* GolfGPSApp */,
+				6393EB782DED09A400262FFA /* GolfGPSAppTests */,
+				6393EB822DED09A400262FFA /* GolfGPSAppUITests */,
+				6393EB942DED0A1100262FFA /* Frameworks */,
+				6393EB602DED09A200262FFA /* Products */,
+				6393EBBF2DEE3A7F00262FFA /* GoogleService-Info.plist */,
+				5E23711171236CC118AC77B6 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		6393EB602DED09A200262FFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6393EB5F2DED09A200262FFA /* GolfGPSApp.app */,
+				6393EB752DED09A400262FFA /* GolfGPSAppTests.xctest */,
+				6393EB7F2DED09A400262FFA /* GolfGPSAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6393EB942DED0A1100262FFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6393EBBD2DED172B00262FFA /* CoreLocation.framework */,
+				6393EBBB2DED171D00262FFA /* MapKit.framework */,
+				6393EB952DED0A1100262FFA /* StoreKit.framework */,
+				98F5CE18C83A9A0E7237E3F4 /* Pods_GolfGPSApp.framework */,
+				0BAF3EAC3EEBBE341EA6BAEE /* Pods_GolfGPSApp_GolfGPSAppUITests.framework */,
+				97B32694D0649F3766C7619D /* Pods_GolfGPSAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6393EB5E2DED09A200262FFA /* GolfGPSApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6393EB882DED09A400262FFA /* Build configuration list for PBXNativeTarget "GolfGPSApp" */;
+			buildPhases = (
+				4022135E617C72A45D93A009 /* [CP] Check Pods Manifest.lock */,
+				6393EB5B2DED09A200262FFA /* Sources */,
+				6393EB5C2DED09A200262FFA /* Frameworks */,
+				6393EB5D2DED09A200262FFA /* Resources */,
+				748F06A3D2293F089730BCA0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6393EB612DED09A200262FFA /* GolfGPSApp */,
+			);
+			name = GolfGPSApp;
+			productName = GolfGPSApp;
+			productReference = 6393EB5F2DED09A200262FFA /* GolfGPSApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6393EB742DED09A400262FFA /* GolfGPSAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6393EB8D2DED09A400262FFA /* Build configuration list for PBXNativeTarget "GolfGPSAppTests" */;
+			buildPhases = (
+				12329CF1937BFA9DB8E524E4 /* [CP] Check Pods Manifest.lock */,
+				6393EB712DED09A400262FFA /* Sources */,
+				6393EB722DED09A400262FFA /* Frameworks */,
+				6393EB732DED09A400262FFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6393EB772DED09A400262FFA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6393EB782DED09A400262FFA /* GolfGPSAppTests */,
+			);
+			name = GolfGPSAppTests;
+			productName = GolfGPSAppTests;
+			productReference = 6393EB752DED09A400262FFA /* GolfGPSAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6393EB7E2DED09A400262FFA /* GolfGPSAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6393EB902DED09A400262FFA /* Build configuration list for PBXNativeTarget "GolfGPSAppUITests" */;
+			buildPhases = (
+				9FB8AF505BD61C86EABD0EF7 /* [CP] Check Pods Manifest.lock */,
+				6393EB7B2DED09A400262FFA /* Sources */,
+				6393EB7C2DED09A400262FFA /* Frameworks */,
+				6393EB7D2DED09A400262FFA /* Resources */,
+				7FE688732692BFD07E105F6B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6393EB812DED09A400262FFA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				6393EB822DED09A400262FFA /* GolfGPSAppUITests */,
+			);
+			name = GolfGPSAppUITests;
+			productName = GolfGPSAppUITests;
+			productReference = 6393EB7F2DED09A400262FFA /* GolfGPSAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6393EB572DED09A200262FFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					6393EB5E2DED09A200262FFA = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					6393EB742DED09A400262FFA = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6393EB5E2DED09A200262FFA;
+					};
+					6393EB7E2DED09A400262FFA = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 6393EB5E2DED09A200262FFA;
+					};
+				};
+			};
+			buildConfigurationList = 6393EB5A2DED09A200262FFA /* Build configuration list for PBXProject "GolfGPSApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6393EB562DED09A200262FFA;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6393EB602DED09A200262FFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6393EB5E2DED09A200262FFA /* GolfGPSApp */,
+				6393EB742DED09A400262FFA /* GolfGPSAppTests */,
+				6393EB7E2DED09A400262FFA /* GolfGPSAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6393EB5D2DED09A200262FFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6393EBC02DEE3A8000262FFA /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393EB732DED09A400262FFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393EB7D2DED09A400262FFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12329CF1937BFA9DB8E524E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GolfGPSAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4022135E617C72A45D93A009 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GolfGPSApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		748F06A3D2293F089730BCA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GolfGPSApp/Pods-GolfGPSApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GolfGPSApp/Pods-GolfGPSApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GolfGPSApp/Pods-GolfGPSApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FE688732692BFD07E105F6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GolfGPSApp-GolfGPSAppUITests/Pods-GolfGPSApp-GolfGPSAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GolfGPSApp-GolfGPSAppUITests/Pods-GolfGPSApp-GolfGPSAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GolfGPSApp-GolfGPSAppUITests/Pods-GolfGPSApp-GolfGPSAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FB8AF505BD61C86EABD0EF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GolfGPSApp-GolfGPSAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6393EB5B2DED09A200262FFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393EB712DED09A400262FFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6393EB7B2DED09A400262FFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6393EB772DED09A400262FFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6393EB5E2DED09A200262FFA /* GolfGPSApp */;
+			targetProxy = 6393EB762DED09A400262FFA /* PBXContainerItemProxy */;
+		};
+		6393EB812DED09A400262FFA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6393EB5E2DED09A200262FFA /* GolfGPSApp */;
+			targetProxy = 6393EB802DED09A400262FFA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6393EB892DED09A400262FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE5DC58F7F84BEC6368C0570 /* Pods-GolfGPSApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GolfGPSApp/GolfGPSApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GolfGPSApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs your location to track shots and distances.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location for GPS-based distance calculations.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Goergen.GolfGPSApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6393EB8A2DED09A400262FFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DE20A6EB6B4EF424F6A95BC /* Pods-GolfGPSApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GolfGPSApp/GolfGPSApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GolfGPSApp/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs your location to track shots and distances.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location for GPS-based distance calculations.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Goergen.GolfGPSApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6393EB8B2DED09A400262FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6393EB8C2DED09A400262FFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6393EB8E2DED09A400262FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B194044E4BC529D67379BE3 /* Pods-GolfGPSAppTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Goergen.GolfGPSAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GolfGPSApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GolfGPSApp";
+			};
+			name = Debug;
+		};
+		6393EB8F2DED09A400262FFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 588C3CE8B3584B9227920BF1 /* Pods-GolfGPSAppTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Goergen.GolfGPSAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GolfGPSApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GolfGPSApp";
+			};
+			name = Release;
+		};
+		6393EB912DED09A400262FFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8B198809366D9C3D8A8D2AF /* Pods-GolfGPSApp-GolfGPSAppUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Goergen.GolfGPSAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GolfGPSApp;
+			};
+			name = Debug;
+		};
+		6393EB922DED09A400262FFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 381B8B938754EB36760D7C02 /* Pods-GolfGPSApp-GolfGPSAppUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Goergen.GolfGPSAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GolfGPSApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6393EB5A2DED09A200262FFA /* Build configuration list for PBXProject "GolfGPSApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393EB8B2DED09A400262FFA /* Debug */,
+				6393EB8C2DED09A400262FFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6393EB882DED09A400262FFA /* Build configuration list for PBXNativeTarget "GolfGPSApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393EB892DED09A400262FFA /* Debug */,
+				6393EB8A2DED09A400262FFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6393EB8D2DED09A400262FFA /* Build configuration list for PBXNativeTarget "GolfGPSAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393EB8E2DED09A400262FFA /* Debug */,
+				6393EB8F2DED09A400262FFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6393EB902DED09A400262FFA /* Build configuration list for PBXNativeTarget "GolfGPSAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6393EB912DED09A400262FFA /* Debug */,
+				6393EB922DED09A400262FFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6393EB572DED09A200262FFA /* Project object */;
+}

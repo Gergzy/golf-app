@@ -1,0 +1,6 @@
+framework module Pods_GolfGPSApp {
+  umbrella header "Pods-GolfGPSApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
