@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  GolfGPSApp
-//
-//  Created by Samuel Goergen on 6/1/25.
-//
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -15,82 +8,81 @@ import SwiftUI
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-// Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var playsLikeLabel: UILabel!
     @IBOutlet weak var recommendationLabel: UILabel!
-    @IBOutlet weak var handicapLabel: UILabel!
-    @IBOutlet weak var scoreTextField: UITextField!
 
     private var sidebarViewController: SidebarViewController?
     private var isSidebarVisible = false
     private let sidebarWidth: CGFloat = 250
-    private var shouldSkipAuthCheck = false // New flag
-// Actions
+    private var shouldSkipAuthCheck = false
+
+    // Actions
     @IBAction func startShot(_ sender: UIButton) {
         guard let location = locationManager.location else { return }
         startLocation = location
         distanceLabel.text = "Distance: Shot started"
-        // Revert to hole distance after a brief delay
+        playsLikeLabel.text = "Plays Like: Shot started"
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.updateDistanceToHole()
         }
     }
-    
+
     @IBAction func endShot(_ sender: UIButton) {
         guard let start = startLocation, let end = locationManager.location else { return }
         let distance = start.distance(from: end)
         let club = items[pickerView.selectedRow(inComponent: 0)]
         let shot = Shot(club: club, distance: distance)
         shots.append(shot)
-        // Refresh user status before saving
         userStatusViewModel.fetchUserStatus()
         saveShots()
-        // Show shot distance briefly
         distanceLabel.text = String(format: "Distance: %.1f yards", distance * 1.09361)
-        // Revert to hole distance after a brief delay
+        playsLikeLabel.text = "Plays Like: N/A"
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.updateDistanceToHole()
         }
         startLocation = nil
         print("End shot called, isLoggedIn = \(userStatusViewModel.isLoggedIn), uid = \(userStatusViewModel.currentUser?.uid ?? "nil")")
     }
-    
+
     @IBAction func recommendClub(_ sender: UIButton) {
         guard let currentLocation = locationManager.location else {
             recommendationLabel.text = "Recommendation: Location unavailable"
             return
         }
         let holeLocation = CLLocation(latitude: holeCoordinate.latitude, longitude: holeCoordinate.longitude)
-        let distance = currentLocation.distance(from: holeLocation) * 1.09361 // Yards
+        let distance = currentLocation.distance(from: holeLocation) * 1.09361
         let club = recommendClub(forDistance: distance)
         recommendationLabel.text = "Recommendation: \(club)"
     }
-    
+
     @IBAction func toggleSidebar(_ sender: UIBarButtonItem) {
-            isSidebarVisible.toggle()
-            if isSidebarVisible {
-                showSidebar()
-            } else {
-                hideSidebar()
-            }
+        isSidebarVisible.toggle()
+        if isSidebarVisible {
+            showSidebar()
+        } else {
+            hideSidebar()
         }
-    
-// Properties
+    }
+
+    // Properties
     let db = Firestore.firestore()
     let locationManager = CLLocationManager()
-    var holeCoordinate = CLLocationCoordinate2D(latitude: 45.099087, longitude: -93.518656) // Mock hole
+    var holeCoordinate = CLLocationCoordinate2D(latitude: 45.099087, longitude: -93.518656)
+    var holeElevation: Double = 0.0 // Elevation in meters, fetched from API
+    var userElevation: Double = 0.0 // Elevation in meters, fetched from API
     let items = ["Driver", "3-Wood", "5-Wood", "7-Wood", "1-Iron", "2-Iron", "3-Iron", "4-Iron", "5-Iron", "6-Iron", "7-Iron", "8-Iron", "9-Iron", "Pitching Wedge", "Gap Wedge", "Sand Wedge", "Lob Wedge"]
     let userStatusViewModel = UserStatusViewModel()
     var startLocation: CLLocation?
     var shots: [Shot] = []
     var scores: [ScoreEntry] = []
-    
+
     struct Shot: Codable {
         let club: String
-        let distance: Double // Meters
-        var id: String? // Firestore document ID
+        let distance: Double
+        var id: String?
         
         enum CodingKeys: String, CodingKey {
             case club
@@ -98,7 +90,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             case id
         }
     }
-    
+
     struct ScoreEntry: Codable {
         let course: String
         let score: Double
@@ -123,37 +115,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         pickerView.dataSource = self
         print("PickerView frame: \(pickerView.frame)")
         distanceLabel.text = "Distance: Not measured"
+        playsLikeLabel.text = "Plays Like: Not calculated"
         print("DistanceLabel set")
         recommendationLabel.text = "Recommendation: None"
         print("RecommendationLabel set")
-        handicapLabel.text = "Handicap: Not calculated"
-        print("HandicapLabel set")
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
         mapView.addGestureRecognizer(longPress)
         print("Long press gesture added")
 
-        // Set up navigation bar with sidebar toggle
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .plain, target: self, action: #selector(toggleSidebar))
         print("Hamburger icon set")
 
-        // Initial distance update
-        if locationManager.location != nil {
-            updateDistanceToHole()
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.userStatusViewModel.fetchUserStatus()
-            print("After fetch: isLoggedIn = \(self.userStatusViewModel.isLoggedIn), uid = \(self.userStatusViewModel.currentUser?.uid ?? "nil")")
-            if !self.userStatusViewModel.isLoggedIn {
-                print("User not logged in, presenting login view")
-                self.presentLoginView()
-            } else if let userId = self.userStatusViewModel.currentUser?.uid {
-                print("User is logged in, loading data with uid = \(userId)")
-                self.loadShots()
-                self.loadScores()
+        // Fetch initial elevation for default hole coordinate
+        fetchElevation(for: holeCoordinate) { elevation in
+            if let elevation = elevation {
+                self.holeElevation = elevation
+                print("Hole elevation set to \(elevation) meters")
+                self.updateDistanceToHole()
             } else {
-                print("Inconsistent state: isLoggedIn true but no UID, presenting login view")
-                self.presentLoginView()
+                print("Failed to fetch initial hole elevation, using default value")
+                self.holeElevation = 0.0
+                self.updateDistanceToHole()
             }
         }
     }
@@ -178,92 +160,185 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             print("Login view presentation completed")
         }
     }
-    
+
     @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             let touchPoint = gestureRecognizer.location(in: mapView)
             let newCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-            // Remove existing annotation
             let annotations = mapView.annotations
             mapView.removeAnnotations(annotations)
-            // Update holeCoordinate and add new annotation
             holeCoordinate = newCoordinate
             let annotation = MKPointAnnotation()
             annotation.coordinate = holeCoordinate
             annotation.title = "Hole"
             mapView.addAnnotation(annotation)
-            // Update the map region to center on the new location
             let region = MKCoordinateRegion(center: holeCoordinate, latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
-            // Update distance to new pin
-            updateDistanceToHole()
+            
+            // Fetch elevation for the new hole coordinate
+            fetchElevation(for: holeCoordinate) { elevation in
+                if let elevation = elevation {
+                    self.holeElevation = elevation
+                    print("Hole elevation set to \(elevation) meters")
+                } else {
+                    print("Failed to fetch elevation, using default value")
+                    self.holeElevation = 0.0
+                }
+                self.updateDistanceToHole()
+            }
         }
     }
-    
+
+    func fetchElevation(for coordinate: CLLocationCoordinate2D, completion: @escaping (Double?) -> Void) {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "GOOGLE_API_KEY") as? String, !apiKey.isEmpty else {
+            print("API Key not found in config.xcconfig")
+            if let infoDict = Bundle.main.infoDictionary {
+                print("Info.plist contents: \(infoDict)")
+            } else {
+                print("No Info.plist dictionary available")
+            }
+            completion(nil)
+            return
+        }
+
+        print("Using API Key: \(apiKey)")
+
+        let cleanApiKey = apiKey.trimmingCharacters(in: CharacterSet(charactersIn: "\""))
+        let urlString = "https://maps.googleapis.com/maps/api/elevation/json?locations=\(coordinate.latitude),\(coordinate.longitude)&key=\(cleanApiKey)"
+        print("URL: \(urlString)")
+
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL for Elevation API: \(urlString)")
+            completion(nil)
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.setValue("iOSApp/1.0 (Simulator)", forHTTPHeaderField: "User-Agent")
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error fetching elevation: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            guard let data = data else {
+                print("No data received from Elevation API")
+                completion(nil)
+                return
+            }
+
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let results = json["results"] as? [[String: Any]],
+                   let firstResult = results.first,
+                   let elevation = firstResult["elevation"] as? Double {
+                    completion(elevation)
+                } else {
+                    print("Invalid JSON structure from Elevation API")
+                    if let jsonString = String(data: data, encoding: .utf8) {
+                        print("Received JSON: \(jsonString)")
+                    }
+                    completion(nil)
+                }
+            } catch {
+                print("Error parsing Elevation API response: \(error.localizedDescription)")
+                completion(nil)
+            }
+        }
+
+        task.resume()
+    }
+
     func setupMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
-        // Enable user interaction for zooming and panning
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
-        // Add the hole annotation
         let annotation = MKPointAnnotation()
         annotation.coordinate = holeCoordinate
         annotation.title = "Hole"
         mapView.addAnnotation(annotation)
-        // Set a larger initial region to allow zooming out
         let region = MKCoordinateRegion(center: holeCoordinate, latitudinalMeters: 500, longitudinalMeters: 500)
         mapView.setRegion(region, animated: true)
     }
-    
+
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-    
-    // PickerView Setup
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return items.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return items[row]
+
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        label.text = items[row]
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        return label
     }
-    
-    private func updateDistanceToHole() {
-        guard let location = locationManager.location else {
-            distanceLabel.text = "Distance: Location unavailable"
-            return
-        }
-        let holeLocation = CLLocation(latitude: holeCoordinate.latitude, longitude: holeCoordinate.longitude)
-        let distance = location.distance(from: holeLocation) * 1.09361 // Convert meters to yards
-        DispatchQueue.main.async {
-            self.distanceLabel.text = String(format: "Distance: %.1f yards", distance)
-        }
-    }
-    
-    // Location Updates
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        updateDistanceToHole()
-        let holeLocation = CLLocation(latitude: holeCoordinate.latitude, longitude: holeCoordinate.longitude)
-        let distance = location.distance(from: holeLocation) * 1.09361 // Yards
-        DispatchQueue.main.async {
-            self.distanceLabel.text = String(format: "Distance: %.1f yards", distance)
-        }        }
-    
+        print("Updated location: latitude \(location.coordinate.latitude), longitude \(location.coordinate.longitude), altitude \(location.altitude) meters, horizontalAccuracy \(location.horizontalAccuracy) meters, verticalAccuracy \(location.verticalAccuracy) meters, timestamp \(location.timestamp)")
+        
+        // Fetch elevation for the current user location
+        fetchElevation(for: location.coordinate) { [weak self] elevation in
+            if let elevation = elevation {
+                self?.userElevation = elevation
+                print("User elevation set to \(elevation) meters")
+            } else {
+                print("Failed to fetch user elevation, using default value")
+                self?.userElevation = 0.0
+            }
+            self?.updateDistanceToHole()
+        }
+    }
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         let alert = UIAlertController(title: "Error", message: "Location error: \(error.localizedDescription)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
-    
+
+    private func updateDistanceToHole() {
+        guard let location = locationManager.location else {
+            distanceLabel.text = "Distance: Location unavailable"
+            playsLikeLabel.text = "Plays Like: Unavailable"
+            return
+        }
+        let holeLocation = CLLocation(latitude: holeCoordinate.latitude, longitude: holeCoordinate.longitude)
+        let distance = location.distance(from: holeLocation) * 1.09361 // Convert to yards
+        
+        // Calculate elevation difference with fetched user elevation
+        let elevationDifferenceMeters = holeElevation - userElevation
+        let elevationDifferenceFeet = elevationDifferenceMeters * 3.28084
+        let elevationDifferenceYards = elevationDifferenceFeet / 3.0
+        
+        // Insert print statements
+        print("Hole Elevation: \(holeElevation) meters")
+        print("Current location elevation: \(userElevation) meters")
+        print("Elevation difference: \(elevationDifferenceFeet) feet")
+        
+        // Adjust distance for "Plays Like"
+        let adjustedDistance = distance + elevationDifferenceYards
+        
+        DispatchQueue.main.async {
+            self.distanceLabel.text = String(format: "Distance: %.1f yards (Elev Diff: %.1f ft)", distance, elevationDifferenceFeet)
+            self.playsLikeLabel.text = String(format: "Plays Like: %.1f yards", adjustedDistance)
+        }
+    }
+
     func saveShots() {
         print("saveShots called, isLoggedIn = \(userStatusViewModel.isLoggedIn), uid from viewModel = \(userStatusViewModel.currentUser?.uid ?? "nil"), auth currentUser = \(Auth.auth().currentUser?.uid ?? "nil")")
         guard let userId = userStatusViewModel.currentUser?.uid else {
@@ -349,7 +424,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
 
-    // Club Recommendation
     func recommendClub(forDistance distance: Double) -> String {
         let clubAverages = shots.reduce(into: [String: [Double]]()) { dict, shot in
             dict[shot.club, default: []].append(shot.distance * 1.09361)
@@ -360,58 +434,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let suitableClub = averages.min { abs($0.value - distance) < abs($1.value - distance) }
         return suitableClub?.key ?? "No recommendation"
     }
-    
-    @IBAction func calculateHandicap(_ sender: UIButton) {
-        guard let scoreText = scoreTextField.text, let score = Double(scoreText), let userId = userStatusViewModel.currentUser?.uid else {
-            handicapLabel.text = "Handicap: Invalid score"
-            print("Invalid score or no user ID")
-            return
-        }
-        let scoreEntry = ScoreEntry(course: "Minnehaha Creek", score: score, holes: Array(1...18)) // Mock holes
-        scores.append(scoreEntry)
-        print("Saving score: \(score) for user: \(userId)")
-        db.collection("users").document(userId).collection("Score").addDocument(data: [
-            "course": scoreEntry.course,
-            "score": scoreEntry.score,
-            "holes": scoreEntry.holes
-        ]) { error in
-            if let error = error {
-                print("Error saving score: \(error.localizedDescription)")
-            } else {
-                print("Score saved successfully")
-            }
-        }
-        if scores.count >= 3 {
-            let handicap = calculateHandicap()
-            handicapLabel.text = String(format: "Handicap: %.1f", handicap)
-        } else {
-            handicapLabel.text = "Handicap: Need \(3 - scores.count) more scores"
-        }
-        scoreTextField.text = ""
-    }
-    
+
     func calculateHandicap() -> Double {
-        let courseRating = 72.0 // Mock value
-        let slopeRating = 113.0 // Standard
+        let courseRating = 72.0
+        let slopeRating = 113.0
         let differentials = scores.map { ($0.score - courseRating) * 113 / slopeRating }
         let lowest = differentials.sorted().prefix(3)
         return lowest.reduce(0, +) / Double(lowest.count) * 0.96
     }
-    
-    private func showSidebar() {
-            guard sidebarViewController == nil else { return }
-            let sidebarVC = SidebarViewController()
-            sidebarVC.delegate = self
-            sidebarVC.view.frame = CGRect(x: -sidebarWidth, y: 0, width: sidebarWidth, height: view.frame.height)
-            view.addSubview(sidebarVC.view)
-            addChild(sidebarVC)
-            sidebarVC.didMove(toParent: self)
-            sidebarViewController = sidebarVC
 
-            UIView.animate(withDuration: 0.3) {
-                sidebarVC.view.frame.origin.x = 0
-            }
+    private func showSidebar() {
+        guard sidebarViewController == nil else { return }
+        let sidebarVC = SidebarViewController()
+        sidebarVC.delegate = self
+        sidebarVC.view.frame = CGRect(x: -sidebarWidth, y: 0, width: sidebarWidth, height: view.frame.height)
+        view.addSubview(sidebarVC.view)
+        addChild(sidebarVC)
+        sidebarVC.didMove(toParent: self)
+        sidebarViewController = sidebarVC
+
+        UIView.animate(withDuration: 0.3) {
+            sidebarVC.view.frame.origin.x = 0
         }
+    }
 
     private func hideSidebar() {
         guard let sidebarVC = sidebarViewController else { return }
@@ -424,6 +469,4 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.sidebarViewController = nil
         }
     }
-
 }
-

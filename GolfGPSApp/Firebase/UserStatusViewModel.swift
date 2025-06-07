@@ -4,7 +4,6 @@
 //
 //  Created by Samuel Goergen on 6/2/25.
 //
-
 import FirebaseAuth
 import Combine
 
